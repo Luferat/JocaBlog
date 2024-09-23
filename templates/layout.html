@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    {# Faz a carga do CSS adicional caso exista #}
+    {% if page.css %}
+    <link rel="stylesheet" href="/static/css/{{page.css}}">
+    {% endif %}
+    <title>{{ page.title }}</title>
+</head>
+
+<body>
+
+    <header>LOGO e Cabeçalho</header>
+
+    <nav>
+        <a href="/">Início</a>
+        <a href="/contacts">Contatos</a>
+        <a href="/about">Sobre</a>
+    </nav>
+
+    <main>
+        <article>{% block article %}{% endblock %}</article>
+        <aside>{% block aside %}{% endblock %}</aside>
+    </main>
+
+    <footer>© 2024 Joca da Silva</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/static/js/layout.js"></script>
+    {% if page.js %}
+    <script src="/static/js/{{ page.js }}"></script>
+    {% endif %}
+</body>
+
+</html>
