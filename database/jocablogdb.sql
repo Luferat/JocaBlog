@@ -25,6 +25,7 @@ CREATE TABLE staff (
     sta_email VARCHAR(255) NOT NULL,
     sta_password VARCHAR(63) NOT NULL,
     sta_birth DATE NOT NULL,
+    sta_image VARCHAR(255),
     sta_description VARCHAR(255),
     sta_type ENUM('moderator', 'author', 'admin') DEFAULT 'moderator',
     sta_status ENUM('on', 'off', 'del') DEFAULT 'on'
@@ -79,6 +80,7 @@ INSERT INTO staff (
     sta_email,
     sta_password,
     sta_birth,
+    sta_image,
     sta_description,
     sta_type
 ) VALUES (
@@ -86,6 +88,7 @@ INSERT INTO staff (
     'jocadasilvajoquinha@gmail.com',
     SHA1('Senha123'),
     '2000-03-27',
+    'https://randomuser.me/api/portraits/men/1.jpg',
     'Programador, escultor, pintor, preparador e enrolador.',
     'admin'
 ), (
@@ -93,6 +96,7 @@ INSERT INTO staff (
     'marineuza@email.com',
     SHA1('Senha123'),
     '1999-08-14',
+    'https://randomuser.me/api/portraits/women/1.jpg',
     'Programadora, arrumadora, colecionadora e instrutora.',
     'author'
 );
@@ -103,6 +107,7 @@ INSERT INTO staff (
     sta_email,
     sta_password,
     sta_birth,
+    sta_image,
     sta_description,
     sta_type
 ) VALUES (
@@ -110,70 +115,39 @@ INSERT INTO staff (
     'maria.oliveira@example.com',
     SHA1('Senha123'),
     '1985-07-15',
+    'https://randomuser.me/api/portraits/women/2.jpg',
     'Escritora e revisora de textos.',
     'author'
-);
-
-INSERT INTO staff (
-    sta_name,
-    sta_email,
-    sta_password,
-    sta_birth,
-    sta_description,
-    sta_type
-) VALUES (
+), (
     'Carlos Pereira',
     'carlos.pereira@example.com',
     SHA1('Senha123'),
     '1990-11-22',
+    'https://randomuser.me/api/portraits/men/3.jpg',
     'Moderador de conteúdo e suporte ao cliente.',
     'moderator'
-);
-
-INSERT INTO staff (
-    sta_name,
-    sta_email,
-    sta_password,
-    sta_birth,
-    sta_description,
-    sta_type
-) VALUES (
+), (
     'Ana Souza',
     'ana.souza@example.com',
     SHA1('Senha123'),
     '1995-05-30',
+    'https://randomuser.me/api/portraits/women/4.jpg',
     'Autora de artigos e blogs.',
     'author'
-);
-
-INSERT INTO staff (
-    sta_name,
-    sta_email,
-    sta_password,
-    sta_birth,
-    sta_description,
-    sta_type
-) VALUES (
+), (
     'Pedro Santos',
     'pedro.santos@example.com',
     SHA1('Senha123'),
     '1988-02-14',
+    'https://randomuser.me/api/portraits/men/5.jpg',
     'Moderador de fóruns e redes sociais.',
     'moderator'
-);
-
-INSERT INTO staff (
-    sta_name,
-    sta_email,
-    sta_password,
-    sta_birth,
-    sta_description,
-    sta_type
-) VALUES (
+), (
     'Luciana Lima',
     'luciana.lima@example.com',
     SHA1('Senha123'),
     '1992-09-05',
+    'https://randomuser.me/api/portraits/women/6.jpg',
     'Escritora de ficção e poesia.',
     'author'
 );

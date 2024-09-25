@@ -7,14 +7,22 @@
     <link rel="stylesheet" href="/static/css/layout.css">
     {# Faz a carga do CSS adicional caso exista #}
     {% if page.css %}
-    <link rel="stylesheet" href="/static/css/{{page.css}}">
+    <link rel="stylesheet" href="/static/css/{{ page['css'] }}">
     {% endif %}
-    <title>{{ page.title }}</title>
+
+    {% if page.title == '' %}
+    <title>{{ page.site.NAME }}</title>
+    {% else %}
+    <title>{{ page.site.NAME }} - {{ page.title }}</title>
+    {% endif %}
 </head>
 
 <body>
 
-    <header>LOGO e Cabeçalho</header>
+    <header>
+        <img src="{{ page.site.LOGO }}" alt="Logotipo de {{ page.site.NAME }}">
+        <h1>{{ page.site.NAME }}</h1>
+    </header>
 
     <nav>
         <a href="/">Início</a>
@@ -23,11 +31,18 @@
     </nav>
 
     <main>
-        <article>{% block article %}{% endblock %}</article>
-        <aside>{% block aside %}{% endblock %}</aside>
+
+        <article>
+            {% block article %}{% endblock %}
+        </article>
+
+        <aside>
+            {% block aside %}{% endblock %}
+        </aside>
+
     </main>
 
-    <footer>© 2024 Joca da Silva</footer>
+    <footer>© 2024 {{ page.owner }}</footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/js/layout.js"></script>
