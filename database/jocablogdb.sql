@@ -154,12 +154,15 @@ INSERT INTO staff (
 
 -- Tabela "article"
 INSERT INTO article (
+    art_date,
     art_title,
     art_resume,
     art_thumbnail,
     art_content,
     art_author
 ) VALUES (
+    -- Gera uma data aleatória entre '2024-01-01 00:00:00' e '2024-12-31 23:59:59'
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Primeiro artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/300',
@@ -180,138 +183,77 @@ INSERT INTO article (
 
 -- Insersões por IA
 INSERT INTO article (
+    art_date,
     art_title,
     art_resume,
     art_thumbnail,
     art_content,
     art_author
 ) VALUES (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Segundo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/295',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '3'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Terceiro artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/296',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '4'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Quarto artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/297',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '5'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Quinto artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/298',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '6'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Sexto artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/299',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '7'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Sétimo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/300',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '2'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Oitavo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/301',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '3'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Nono artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/302',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '4'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Décimo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/303',
     '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
     '5'
-);
-
-INSERT INTO article (
-    art_title,
-    art_resume,
-    art_thumbnail,
-    art_content,
-    art_author
-) VALUES (
+), (
+    FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Décimo primeiro artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/304',

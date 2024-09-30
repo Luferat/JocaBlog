@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block article %}
+
+<h2>{{ page.article['art_title'] }}</h2>
+<div class="author-date">
+    Por {{ page.article['sta_name'] }}
+    <span> em {{ page.article['art_datebr'] }}</span>
+</div>
+{{ page.article['art_content'] | safe }}
+
+{% endblock %}
+
+{% block aside %}
+
+{% endblock %}
