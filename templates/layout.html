@@ -10,39 +10,45 @@
     <link rel="stylesheet" href="/static/css/{{ page['css'] }}">
     {% endif %}
 
+    <link rel="shortcut icon" href="{{ page.site.favicon }}">
+
     {% if page.title == '' %}
-    <title>{{ page.site.NAME }}</title>
+    <title>{{ page.site.name }}</title>
     {% else %}
-    <title>{{ page.site.NAME }} - {{ page.title }}</title>
+    <title>{{ page.site.name }} - {{ page.title }}</title>
     {% endif %}
 </head>
 
 <body>
 
-    <header>
-        <img src="{{ page.site.LOGO }}" alt="Logotipo de {{ page.site.NAME }}">
-        <h1>{{ page.site.NAME }}</h1>
-    </header>
+    <div id="wrap">
 
-    <nav>
-        <a href="/">Início</a>
-        <a href="/contacts">Contatos</a>
-        <a href="/about">Sobre</a>
-    </nav>
+        <header>
+            <img src="{{ page.site.logo }}" alt="Logotipo de {{ page.site.name }}">
+            <h1>{{ page.site.name }}</h1>
+        </header>
 
-    <main>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/contacts">Contatos</a>
+            <a href="/about">Sobre</a>
+        </nav>
 
-        <article>
-            {% block article %}{% endblock %}
-        </article>
+        <main>
 
-        <aside>
-            {% block aside %}{% endblock %}
-        </aside>
+            <article>
+                {% block article %}{% endblock %}
+            </article>
 
-    </main>
+            <aside>
+                {% block aside %}{% endblock %}
+            </aside>
 
-    <footer>© 2024 {{ page.owner }}</footer>
+        </main>
+
+        <footer>© 2024 {{ page.site.owner }}</footer>
+
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/js/layout.js"></script>

@@ -3,9 +3,10 @@ from flask import Flask, render_template
 
 # Constantes do site
 SITE = {
-    'NAME': 'JocaBlog',
-    'OWNER': 'Joca da Silva',
-    'LOGO': '/static/img/logo.png'
+    'name': 'JocaBlog',
+    'owner': 'Joca da Silva',
+    'logo': '/static/img/logo.png',
+    'favicon': '/static/img/logo.png'
 }
 
 # Cria uma aplicação Flask usando uma instância do Flask
