@@ -12,10 +12,27 @@
     display: block;
 }
 
+.aside-author {
+    margin-bottom: 1rem;
+    max-width: 250px;
+    margin: 1rem auto;
+}
+
+.aside-author img {
+    display: block;
+    width: 100%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.aside-author ul {
+    font-size: small;
+    padding-left: 2rem;
+}
+
 @media screen and (min-width: 575px) {
 
     .author-date span {
         display: inline;
     }
-    
+
 }

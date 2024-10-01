@@ -206,7 +206,7 @@ INSERT INTO article (
 </ul>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
     ',
-    '3'
+    '5'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Terceiro artigo',
@@ -224,7 +224,7 @@ INSERT INTO article (
 </ul>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
     ',
-    '4'
+    '2'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Quarto artigo',
@@ -260,7 +260,7 @@ INSERT INTO article (
 </ul>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
     ',
-    '6'
+    '2'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Sexto artigo',
@@ -278,7 +278,7 @@ INSERT INTO article (
 </ul>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
     ',
-    '7'
+    '5'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Sétimo artigo',
@@ -314,7 +314,7 @@ INSERT INTO article (
 </ul>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
     ',
-    '3'
+    '2'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Nono artigo',
@@ -332,7 +332,7 @@ INSERT INTO article (
 </ul>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
     ',
-    '4'
+    '5'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Décimo artigo',

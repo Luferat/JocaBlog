@@ -200,10 +200,56 @@ a:hover {
     #wrap>main>aside {
         background-color: #ccc;
         padding: 0 1rem;
-        min-width: 220px;
-        max-width: 220px;
+        min-width: 250px;
+        max-width: 250px;
         border-top: none;
         border-left: 1px dotted black;
     }
 
+}
+
+.aside-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.aside-article {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 90%;
+}
+
+.aside-article img {
+    display: block;
+    width: 4rem;
+    height: auto;
+    margin-right: .5rem;
+}
+
+.aside-article:hover {
+    background-color: #eee;
+}
+
+@media (max-width: 499px) {
+    .aside-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+    .aside-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .aside-article:nth-child(odd) {
+        justify-self: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .aside-grid {
+        grid-template-columns: 1fr;
+    }
 }

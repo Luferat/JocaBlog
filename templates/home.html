@@ -8,11 +8,11 @@
 
     {% for article in page.articles %}
 
-    <div class="article-box" onclick="location.href = '/view/' + {{ article['art_id'] }}">
-        <img src="{{ article['art_thumbnail'] }}" alt="{{ article['art_title'] }}">
+    <div class="article-box" onclick="location.href = '/view/{{ article.art_id }}'">
+        <img src="{{ article.art_thumbnail }}" alt="{{ article.art_title }}">
         <div>
-            <h4>{{ article['art_title'] }}</h4>
-            <small>{{ article['art_resume'] }}</small>
+            <h4>{{ article.art_title }}</h4>
+            <small>{{ article.art_resume }}</small>
         </div>
     </div>
 
@@ -24,7 +24,17 @@
 
 {% block aside %}
 
-<h3>Meu Aside</h3>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+<h3><i class="fa-solid fa-plus"></i> Visualizados</h3>
+
+<div class="aside-grid">
+
+    {% for article in page.most_viewed %}
+    <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
+        <img src="{{ article.art_thumbnail }}" alt="{{ article.art_title }}">
+        <div>{{ article.art_title }}</div>
+    </div>
+    {% endfor %}
+
+</div>
 
 {% endblock %}
