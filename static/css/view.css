@@ -1,1 +1,21 @@
 /* Folhas de estilo de `view.html` */
+
+.author-date {
+    background-color: #ddd;
+    padding: .25rem;
+    text-align: right;
+    font-size: 80%;
+    font-style: italic;
+}
+
+.author-date span {
+    display: block;
+}
+
+@media screen and (min-width: 575px) {
+
+    .author-date span {
+        display: inline;
+    }
+    
+}

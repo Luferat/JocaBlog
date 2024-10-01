@@ -6,8 +6,8 @@ from flask_mysqldb import MySQL, MySQLdb
 SITE = {
     'name': 'JocaBlog',
     'owner': 'Joca da Silva',
-    'logo': '/static/img/logo.png',
-    'favicon': '/static/img/logo.png'
+    'logo': '/static/img/logo01.png',
+    'favicon': '/static/img/favicon.png'
 }
 
 # Cria uma aplicação Flask usando uma instância do Flask
@@ -61,7 +61,7 @@ def home():
         'site': SITE,
         'title': '',
         'css': 'home.css',  # Folhas de estilo desta página (opcional)
-        'js': 'home.js',  # JavaScript desta página (opcional)
+        # 'js': 'home.js',  # JavaScript desta página (opcional)
         # Outras chaves usadas pela página
         'articles': articles
     }
@@ -74,9 +74,11 @@ def home():
 @app.route('/view/<artid>')  # Rota para a página que exibe o artigo completo
 def view(artid):
 
+    # Verifica se o artid é um número. Se não for, retorna um erro 404.
     if not artid.isdigit():
         return page_not_found(404)
 
+    # Consulta SQL para obter os detalhes do artigo e do autor
     sql = '''
         SELECT art_id, art_date, art_title, art_content,
             -- Obtém a data em PT-BR pelo pseudo-campo `art_datebr`
@@ -91,20 +93,24 @@ def view(artid):
             AND art_status = 'on'
             AND art_date <= NOW();
     '''
+    # Cria um cursor para executar a consulta SQL
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(sql, (artid,))
     article = cur.fetchone()
 
-    # Para debug
+    # Para debug: imprime o artigo no console
     # print('\n\n\n', article, '\n\n\n')
 
+    # Se o artigo não for encontrado, retorna um erro 404
     if article is None:
         return page_not_found(404)
-    
+
+    # Atualiza o contador de visualizações do artigo
     sql = 'UPDATE article SET art_view = art_view + 1 WHERE art_id = %s'
     cur.execute(sql, (artid,))
     mysql.connection.commit()
 
+    # Prepara os dados para renderizar a página
     toPage = {
         'site': SITE,
         'title': article['art_title'],
@@ -112,7 +118,10 @@ def view(artid):
         'article': article
     }
 
+    # Fecha o cursor
     cur.close()
+
+    # Renderiza o template 'view.html' com os dados do artigo
     return render_template('view.html', page=toPage)
 
 
@@ -141,13 +150,16 @@ def about():
 
 @app.errorhandler(404)
 def page_not_found(e):
+    # Função para lidar com erros 404 (página não encontrada)
     toPage = {
-        'title': 'Erro 404',
-        'site': SITE,
-        'css': '404.css'
+        'title': 'Erro 404',  # Título da página de erro
+        'site': SITE,         # Nome do site...
+        'css': '404.css'      # Arquivo CSS específico para a página de erro
     }
+    # Renderiza o template '404.html' com os dados da página e retorna o código de status 404
     return render_template('404.html', page=toPage), 404
 
 
 if __name__ == '__main__':
+    # Inicia a aplicação Flask em modo debug
     app.run(debug=True)

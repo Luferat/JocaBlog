@@ -24,8 +24,17 @@
     <div id="wrap">
 
         <header>
-            <img src="{{ page.site.logo }}" alt="Logotipo de {{ page.site.name }}">
-            <h1>{{ page.site.name }}</h1>
+
+            <div>
+                <a href="/"><img src="{{ page.site.logo }}" alt="Logotipo de {{ page.site.name }}"></a>
+                <h1>{{ page.site.name }}</h1>
+            </div>
+
+            <form action="/search" method="get">
+                <input type="search" name="q" placeholder="Procurar...">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+
         </header>
 
         <nav>
@@ -46,7 +55,16 @@
 
         </main>
 
-        <footer>© 2024 {{ page.site.owner }}</footer>
+        <footer>
+            <a href="/"><i class="fa-solid fa-house fa-fw"></i></a>
+            <div>
+                © 2024 {{ page.site.owner }}
+                <small>
+                    <a href="/contacts">Faça contato</a>&nbsp;|&nbsp;<a href="/privacy">Políticas de Privacidade</a>
+                </small>
+            </div>
+            <a href="#wrap"><i class="fa-solid fa-circle-up fa-fw"></i></a>
+        </footer>
 
     </div>
 

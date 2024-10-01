@@ -194,69 +194,179 @@ INSERT INTO article (
     'Segundo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/295',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '3'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Terceiro artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/296',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '4'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Quarto artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/297',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '5'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Quinto artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/298',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '6'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Sexto artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/299',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '7'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Sétimo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/300',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '2'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Oitavo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/301',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '3'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Nono artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/302',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '4'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Décimo artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/303',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '5'
 ), (
     FROM_UNIXTIME( UNIX_TIMESTAMP('2024-01-01 00:00:00') + FLOOR(RAND() * (UNIX_TIMESTAMP('2024-12-31 23:59:59') - UNIX_TIMESTAMP('2024-01-01 00:00:00'))) ),
     'Décimo primeiro artigo',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     'https://picsum.photos/304',
-    '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>',
+    '
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat iure quo fugiat atque officia commodi, perspiciatis adipisci, quam a consequatur aliquam. Earum ad laborum, ut perspiciatis sit consequuntur? Modi.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt quas optio placeat expedita repellendus sunt fugit inventore, rem necessitatibus accusantium ratione reiciendis obcaecati sint. Delectus sunt optio unde nostrum nam?</p>
+<img src="https://picsum.photos/200/300" alt="Imagem aleatória">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero commodi quaerat dolores sint, quis iure incidunt odit magnam ex laborum esse quo voluptatem omnis quas cum! Placeat consectetur aspernatur neque.</p>
+<h4>Lista de links:</h4>
+<ul>
+    <li><a href="https://catabits.com.br" target="_blank">Site do Fessô</a></li>
+    <li><a href="https://github.com/Luferat" target="_blank">GitHub do Fessô</a></li>
+</ul>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam autem animi quas optio minima reprehenderit inventore dignissimos voluptatem hic nobis facilis rerum nemo, iste fuga rem ducimus veritatis reiciendis. Ad.</p>    
+    ',
     '6'
 );
