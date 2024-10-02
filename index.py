@@ -1,6 +1,12 @@
 # Importa as dependências do aplicativo
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL, MySQLdb
+
+# Importa as funções do banco de dados, tabela article
+from functions.db_articles import *
+
+# Importa as funções do banco de dados, tabela comment
+from functions.db_comments import *
 
 # Constantes do site
 SITE = {
@@ -30,26 +36,8 @@ mysql = MySQL(app)
 @app.route('/')  # Rota para a página inicial → raiz
 def home():
 
-    # Consulta SQL
-    sql = '''
-        -- Seleciona os campos abaixo
-        SELECT art_id, art_title, art_resume, art_thumbnail
-        -- desta tabela
-        FROM article
-        -- art_status é 'on'
-        WHERE art_status = 'on'
-            -- E art_date é menor ou igual à data atual
-            -- Não obtém artigos com data futura (agendados)
-            AND art_date <= NOW()
-        -- Ordena pela data mais recente  
-        ORDER BY art_date DESC;
-    '''
-
-    # Executa a query e obtém os dados na forma de DICT
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(sql)
-    articles = cur.fetchall()
-    cur.close()
+    # Obtém todos os artigos
+    articles = get_all(mysql)
 
     # Somente para debug
     # print('\n\n\n', articles, '\n\n\n')
@@ -74,46 +62,70 @@ def home():
 @app.route('/view/<artid>')  # Rota para a página que exibe o artigo completo
 def view(artid):
 
+    # Se o ID do artigo não é um número, mostra 404
     if not artid.isdigit():
         return page_not_found(404)
 
-    sql = '''
-        SELECT art_id, art_date, art_title, art_content,
-            -- Obtém a data em PT-BR pelo pseudo-campo `art_datebr`
-            DATE_FORMAT(art_date, '%%d/%%m/%%Y às %%H:%%i') AS art_datebr,
-            sta_id, sta_name, sta_image, sta_description, sta_type,
-            -- Calcula a idade para `sta_age` considerando ano, mês e dia de nascimento
-            TIMESTAMPDIFF(YEAR, sta_birth, CURDATE()) - 
-                (DATE_FORMAT(CURDATE(), '%%m%%d') < DATE_FORMAT(sta_birth, '%%m%%d')) AS sta_age
-        FROM article
-        INNER JOIN staff ON art_author = sta_id
-        WHERE art_id = %s
-            AND art_status = 'on'
-            AND art_date <= NOW();
-    '''
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(sql, (artid,))
-    article = cur.fetchone()
+    # Obtém um artigo único
+    article = get_one(mysql, artid)
 
     # Para debug
     # print('\n\n\n', article, '\n\n\n')
 
+    # Se o artigo não existe, mostra 404
     if article is None:
         return page_not_found(404)
-    
-    sql = 'UPDATE article SET art_view = art_view + 1 WHERE art_id = %s'
-    cur.execute(sql, (artid,))
-    mysql.connection.commit()
+
+    # Atualiza as visualizações do artigo
+    update_views(mysql, artid)
+
+    # Traduz o `type` do autor
+    if article['sta_type'] == 'admin':
+        article['sta_pt_type'] = 'Administrador(a)'
+    elif article['sta_type'] == 'author':
+        article['sta_pt_type'] = 'Autor(a)'
+    else:
+        article['sta_pt_type'] = 'Moderador(a)'
+
+    # Obtém mais artigos do author
+    articles = get_author(mysql, article['sta_id'], article['art_id'], 4)
+
+    # print('\n\n\n', articles, '\n\n\n')
+
+    # Somente o primeiro nome do autor
+    article['sta_first'] = article['sta_name'].split()[0]
+
+    # Obtém todos os comentários deste artigo
+    comments = get_comments(mysql, article['art_id'])
+
+    # Total de comentários
+    total_comments = len(comments)
+
+    # print('\n\n\n', comments, '\n\n\n')
 
     toPage = {
         'site': SITE,
         'title': article['art_title'],
         'css': 'view.css',
-        'article': article
+        'article': article,
+        'articles': articles,
+        'comments': comments,
+        'total_comments': total_comments
     }
 
-    cur.close()
     return render_template('view.html', page=toPage)
+
+
+@app.route('/comment', methods=['POST'])
+def comment():
+
+    # Obtém dados do formulario
+    form = request.form
+
+    # Salva comentário no banco de dados
+    save_comment(mysql, form)
+
+    return redirect(f"{url_for('view', artid=form['artid'])}#comments")
 
 
 @app.route('/contacts')  # Rota para a página de contatos → /contacts
@@ -147,6 +159,11 @@ def page_not_found(e):
         'css': '404.css'
     }
     return render_template('404.html', page=toPage), 404
+
+
+@app.errorhandler(405)
+def page_not_found(e):
+    return 'Bizonhou!!'
 
 
 if __name__ == '__main__':
