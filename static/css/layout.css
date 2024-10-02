@@ -92,6 +92,16 @@ a:hover {
     flex-grow: 1;
 }
 
+#wrap>header>form button {
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+#wrap>header>form button:hover {
+    cursor: pointer;
+    background-color: #bbb;
+}
+
 #wrap>nav {
     background-color: rgb(50, 59, 68);
     border-top: 1px dotted white;
@@ -181,6 +191,11 @@ a:hover {
         border-left: 1px dotted white;
     }
 
+    #wrap>header>form input,
+    #wrap>header>form button {
+        padding: .35rem .5rem;
+    }
+
     #wrap>nav {
         justify-content: flex-end;
     }
@@ -252,4 +267,16 @@ a:hover {
     .aside-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.center {
+    text-align: center;
+}
+
+.red {
+    color: red;
+}
+
+.small {
+    font-size: small;
 }

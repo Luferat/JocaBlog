@@ -16,7 +16,6 @@ def get_all(mysql):
         -- Ordena pela data mais recente  
         ORDER BY art_date DESC;
     '''
-
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(sql)
     articles = cur.fetchall()
@@ -51,7 +50,11 @@ def get_one(mysql, artid):
 
 def update_views(mysql, artid):
 
-    sql = 'UPDATE article SET art_view = art_view + 1 WHERE art_id = %s'
+    sql = '''
+        UPDATE article 
+            SET art_view = art_view + 1 
+        WHERE art_id = %s
+    '''
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(sql, (artid,))
     mysql.connection.commit()
@@ -83,19 +86,58 @@ def get_by_author(mysql, authorid, ignore, limit):
 def get_most_viewed(mysql, limit):
 
     sql = '''
-
         SELECT `art_id`, `art_title`, `art_thumbnail`
         FROM `article`
         WHERE art_status = 'on'
             AND art_date <= NOW()
         ORDER BY `art_view` DESC
         LIMIT %s;
-
     '''
-
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(sql, (limit,))
     articles = cur.fetchall()
     cur.close()
 
     return articles
+
+
+def get_most_commented(mysql, limit, no_zero_comments=True):
+
+    if no_zero_comments:
+        having = ''
+    else:
+        having = 'HAVING total_comments > 0'
+
+    sql = f'''
+        SELECT a.art_id, a.art_title, a.art_thumbnail, COUNT(c.com_id) AS total_comments
+        FROM  article a
+        JOIN comment c ON a.art_id = c.com_article
+        GROUP BY a.art_id, a.art_title, a.art_thumbnail
+        {having}
+        ORDER BY total_comments DESC
+        LIMIT %s;
+    '''
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(sql, (limit,))
+    articles = cur.fetchall()
+    cur.close()
+
+    return articles
+
+
+def all_comments(mysql, article):
+
+    sql = '''
+        SELECT *,
+        DATE_FORMAT(com_date, '%%d/%%m/%%Y às %%H:%%i') AS com_datebr
+        FROM comment
+        WHERE com_status = 'on'
+            AND com_article = %s
+        ORDER BY com_date DESC        
+    '''
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(sql, (article,))
+    comments = cur.fetchall()
+    cur.close()
+
+    return comments

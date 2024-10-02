@@ -2,12 +2,73 @@
 
 {% block article %}
 
-<h2>{{ page.article.art_title }}</h2>
-<div class="author-date">
-    Por {{ page.article.sta_name }}
-    <span> em {{ page.article.art_datebr }}</span>
+<div class="view-article">
+
+    <h2>{{ page.article.art_title }}</h2>
+    <div class="author-date">
+        Por {{ page.article.sta_name }}
+        <span> em {{ page.article.art_datebr }}</span>
+    </div>
+    {{ page.article.art_content | safe }}
+
 </div>
-{{ page.article.art_content | safe }}
+
+<div class="comment-form" id="comments">
+
+    <h3>Deixe seu comentário</h3>
+    <p class="center red small"><em>Todos os campos são obrigatótios!</em></p>
+
+    <form action="/comment" method="post">
+        <input type="hidden" name="article" value="{{ page.article.art_id }}">
+
+        <div class="comment-field">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" required minlength="3">
+        </div>
+
+        <div class="comment-field">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <textarea name="comment" required minlength="5"></textarea>
+
+        <div>
+            <button type="submit">Enviar</button>
+            <small>← Clique somente uma vez</small>
+        </div>
+    </form>
+
+</div>
+
+{% if page.total_comments == 0 %}
+
+<div class="center">
+    <p>Nenhum comentário ainda?<br>Seja o primeiro a comentar!</p>
+</div>
+
+{% else %}
+
+<div class="comment-list">
+
+    <h3>{{ page.total_comments }} comentários recentes</h3>
+
+    <div class="comment-grid">
+
+        {% for comment in page.comments %}
+
+        <div class="comment-box">
+            <small>Por {{ comment.com_author_name }} em {{ comment.com_datebr }}</small>
+            <div>{{ comment.com_comment }}</div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endif %}
 
 {% endblock %}
 

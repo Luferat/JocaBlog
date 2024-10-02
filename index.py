@@ -1,7 +1,7 @@
 # Importa as dependências do aplicativo
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL, MySQLdb
-from functions.db_articles import get_all, get_by_author, get_most_viewed, get_one, update_views
+from functions.db_articles import *
 
 # Constantes do site
 SITE = {
@@ -35,13 +35,16 @@ def home():
 
     most_viewed = get_most_viewed(mysql, 4)
 
+    most_commented = get_most_commented(mysql, 4, True)
+
     toPage = {
         'site': SITE,
         'title': '',
         'css': 'home.css',
         # 'js': 'home.js',
         'articles': articles,
-        'most_viewed': most_viewed
+        'most_viewed': most_viewed,
+        'most_commented': most_commented
     }
 
     return render_template('home.html', page=toPage)
@@ -71,15 +74,41 @@ def view(artid):
 
     articles = get_by_author(mysql, article['sta_id'], article['art_id'], 4)
 
+    comments = all_comments(mysql, article['art_id'])
+
+    total_comments = len(comments)
+
     toPage = {
         'site': SITE,
         'title': article['art_title'],
         'css': 'view.css',
         'article': article,
-        'articles': articles
+        'articles': articles,
+        'comments': comments,
+        'total_comments': total_comments
     }
 
     return render_template('view.html', page=toPage)
+
+
+@app.route('/comment', methods=['GET', 'POST'])
+def comment():
+    form = dict(request.form)
+
+    sql = '''
+        INSERT INTO comment (
+            com_article, com_author_name, com_author_email, com_comment
+        ) VALUES (
+            %s, %s, %s, %s
+        )
+    '''
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(sql, (form['article'], form['name'],
+                form['email'], form['comment'],))
+    mysql.connection.commit()
+    cur.close()
+
+    return redirect(f"{url_for('view', artid=form['article'])}#comments")
 
 
 @app.route('/contacts')
