@@ -6,8 +6,8 @@ from flask_mysqldb import MySQL, MySQLdb
 SITE = {
     'name': 'JocaBlog',
     'owner': 'Joca da Silva',
-    'logo': '/static/img/logo.png',
-    'favicon': '/static/img/logo.png'
+    'logo': '/static/img/logo01.png',
+    'favicon': '/static/img/favicon.png'
 }
 
 # Cria uma aplicação Flask usando uma instância do Flask
