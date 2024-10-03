@@ -2,6 +2,7 @@
 from flask import Flask, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL, MySQLdb
 from functions.db_articles import *
+from functions.db_comments import *
 
 # Constantes do site
 SITE = {
@@ -77,41 +78,35 @@ def view(artid):
 
     articles = get_by_author(mysql, article['sta_id'], article['art_id'], 4)
 
-    comments = all_comments(mysql, article['art_id'])
+    # Obtém todos os comentários deste artigo
+    comments = get_comments(mysql, article['art_id'])
 
+    # Total de comentários
     total_comments = len(comments)
 
     toPage = {
         'site': SITE,
         'title': article['art_title'],
         'css': 'view.css',
-        'article': article,
-        'articles': articles,
-        'comments': comments,
-        'total_comments': total_comments
+        'article': article, # Artigo a ser exibido
+        'articles': articles, # Artigos do autor
+        'comments': comments, # Comentários
+        'total_comments': total_comments # Total de comentários
     }
 
     return render_template('view.html', page=toPage)
 
 
-@app.route('/comment', methods=['GET', 'POST'])
+@app.route('/comment', methods=['POST'])
 def comment():
-    form = dict(request.form)
 
-    sql = '''
-        INSERT INTO comment (
-            com_article, com_author_name, com_author_email, com_comment
-        ) VALUES (
-            %s, %s, %s, %s
-        )
-    '''
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(sql, (form['article'], form['name'],
-                form['email'], form['comment'],))
-    mysql.connection.commit()
-    cur.close()
+    # Obtém dados do formulario
+    form = request.form
 
-    return redirect(f"{url_for('view', artid=form['article'])}#comments")
+    # Salva comentário no banco de dados
+    save_comment(mysql, form)
+
+    return redirect(f"{url_for('view', artid=form['artid'])}#comments")
 
 
 @app.route('/contacts')
@@ -143,6 +138,10 @@ def page_not_found(e):
         'css': '404.css'
     }
     return render_template('404.html', page=toPage), 404
+
+@app.errorhandler(405)
+def not_permited(e):
+    return page_not_found(404)
 
 
 if __name__ == '__main__':

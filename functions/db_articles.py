@@ -123,21 +123,3 @@ def get_most_commented(mysql, limit, no_zero_comments=True):
     cur.close()
 
     return articles
-
-
-def all_comments(mysql, article):
-
-    sql = '''
-        SELECT *,
-        DATE_FORMAT(com_date, '%%d/%%m/%%Y às %%H:%%i') AS com_datebr
-        FROM comment
-        WHERE com_status = 'on'
-            AND com_article = %s
-        ORDER BY com_date DESC        
-    '''
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(sql, (article,))
-    comments = cur.fetchall()
-    cur.close()
-
-    return comments
