@@ -115,7 +115,7 @@ def contacts():
     toPage = {
         'site': SITE,
         'title': 'Faça contato',
-        'css': 'home.css'
+        'css': 'contacts.css'
     }
     return render_template('contacts.html', page=toPage)
 

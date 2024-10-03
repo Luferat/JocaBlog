@@ -269,14 +269,9 @@ a:hover {
     }
 }
 
-.center {
+.required {
     text-align: center;
-}
-
-.red {
     color: red;
-}
-
-.small {
     font-size: small;
+    font-style: italic;
 }
