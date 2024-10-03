@@ -63,12 +63,15 @@ def view(artid):
 
     update_views(mysql, artid)
 
-    if article['sta_type'] == 'admin':
-        article['type'] = 'Administrador(a)'
-    elif article['sta_type'] == 'author':
-        article['type'] = 'Author(a)'
-    else:
-        article['type'] = 'Moderador(a)'
+    match article['sta_type']:
+        case 'admin':
+            article['type'] = 'Administrador(a)'
+        case 'author':
+            article['type'] = 'Autor(a)'
+        case 'moderator':
+            article['type'] = 'Moderador(a)'
+        case _:
+            article['type'] = 'Colaborador(a)'
 
     article['sta_first'] = article['sta_name'].split()[0]
 
