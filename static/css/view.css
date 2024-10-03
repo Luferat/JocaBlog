@@ -109,4 +109,13 @@
 .comment-box div {
     padding: .5rem;
     font-size: 90%;
+    white-space: pre-wrap;
+    max-height: 8rem;
+    overflow-y: auto;
+}
+
+.invitation {
+    text-align: center;
+    font-style: italic;
+    line-height: 1.5;
 }

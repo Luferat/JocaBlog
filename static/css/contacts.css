@@ -7,6 +7,7 @@
 #contact label {
     display: block;
     padding: 0 0 .25rem .25rem;
+    font-size: 90%;
 }
 
 #contact input,
@@ -18,8 +19,70 @@
 }
 
 #contact input,
-#contact textarea{
+#contact textarea {
     width: 100%;
+    background-color: rgb(255, 229, 229);
     border: 1px solid red;
     border-bottom: 3px solid red;
+}
+
+
+#contact textarea {
+    resize: vertical;
+    height: 6rem;
+    width: 100%;
+}
+
+#contact button {
+    border: none;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    pointer-events: none;
+}
+
+#contact button:hover {
+    background-color: rgb(53, 99, 136);
+}
+
+#contact small {
+    color: gray;
+}
+
+/* Campos / formulário válido */
+
+#contact input:valid,
+#contact textarea:valid {
+    border-color: green;
+    border-bottom: 3px solid green;
+    background-color: rgb(233, 240, 254);
+}
+
+#contact:valid button {
+    background-color: steelblue;
+    pointer-events: all;
+}
+
+.feedback {
+    display: table;
+    margin: auto;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.social i {
+    margin: .5rem 0;
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    margin: 0 0 1rem 1rem;
 }

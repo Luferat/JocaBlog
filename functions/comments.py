@@ -11,7 +11,7 @@ def save_comment(mysql, form): # Salva comentário
     mysql.connection.commit()
     cur.close()
 
-    return 'Enviado'
+    return True
 
 def get_comments(mysql, artid): # Obtém todos os comentarios do artigo
 

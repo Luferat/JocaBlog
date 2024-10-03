@@ -4,6 +4,16 @@
 
 <h2>Faça Contato</h2>
 
+{% if page.sended %}
+
+<div class="feedback">
+    <h3>Olá {{ page.first_name }}!</h3>
+    <p>Seu contato foi enviado com sucesso.</p>
+    <p><em>Obrigado...</em></p>
+</div>
+
+{% else %}
+
 <form action="/contacts" method="post" id="contact">
 
     <p>Preencha os campos abaixo para entrar em contato conosco.</p>
@@ -37,14 +47,35 @@
 
 </form>
 
+{% endif %}
+
+<script>
+    // Evita o reenvio dos formulários ao atualizar a página
+    if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+</script>
+
 {% endblock %}
 
 {% block aside %}
 
-<h3>+contatos</h3>
-<ul>
-    <li>facebook</li>
-    <li>instagram</li>
-</ul>
+<h3><i class="fa-solid fa-plus"></i> Contatos</h3>
+
+<p>Acesse nossas redes sociais para saber mais sobre o <strong>{{ page.site.name }}</strong>.</p>
+
+<div class="social">
+
+    {% for social in page.site.social %}
+
+    <a href="{{ social.link }}" target="_blank" title="{{ social.name }}">{{ social.icon | safe }}</a>
+
+    {% endfor%}
+
+</div>
+
+<h3><i class="fa-solid fa-plus"></i> Sobre</h3>
+<nav>
+    <a href="/about">Sobre</a>
+    <a href="/privacy">Políticas de privacidade</a>
+</nav>
 
 {% endblock %}

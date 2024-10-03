@@ -1,16 +1,37 @@
 # Importa as dependências do aplicativo
 from flask import Flask, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL, MySQLdb
-from functions.db_articles import *
-from functions.db_comments import *
+from functions.articles import *
+from functions.comments import *
+from functions.contacts import save_contact
 
 # Constantes do site
 SITE = {
     'name': 'JocaBlog',
     'owner': 'Joca da Silva',
     'logo': '/static/img/logo01.png',
-    'favicon': '/static/img/favicon.png'
+    'favicon': '/static/img/favicon.png',
+    'social': (
+        {
+            'name': 'Facebook',
+            'link': 'https://facebook.com/pyblog',
+            'icon': '<i class="fa-brands fa-facebook fa-fw fa-3x" style="color: #1877f2"></i>'
+        }, {
+            'name': 'LinkedIn',
+            'link': 'https://linkedin.com/Pyblog',
+            'icon': '<i class="fa-brands fa-linkedin-in fa-fw fa-3x" style="color: #b24020"></i>'
+        }, {
+            'name': 'Youtube',
+            'link': 'https://youtube.com/PyBlog',
+            'icon': '<i class="fa-brands fa-youtube fa-fw fa-3x" style="color: #ff0000;"></i>'
+        }, {
+            'name': 'GitHub',
+            'link': 'https://github.com/PyBlog',
+            'icon': '<i class="fa-brands fa-github fa-fw fa-3x" style="color: #6e5494;"></i>'
+        }
+    )
 }
+
 
 # Cria uma aplicação Flask usando uma instância do Flask
 app = Flask(__name__)
@@ -88,10 +109,10 @@ def view(artid):
         'site': SITE,
         'title': article['art_title'],
         'css': 'view.css',
-        'article': article, # Artigo a ser exibido
-        'articles': articles, # Artigos do autor
-        'comments': comments, # Comentários
-        'total_comments': total_comments # Total de comentários
+        'article': article,  # Artigo a ser exibido
+        'articles': articles,  # Artigos do autor
+        'comments': comments,  # Comentários
+        'total_comments': total_comments  # Total de comentários
     }
 
     return render_template('view.html', page=toPage)
@@ -101,7 +122,7 @@ def view(artid):
 def comment():
 
     # Obtém dados do formulario
-    form = request.form
+    form = dict(request.form)
 
     # Salva comentário no banco de dados
     save_comment(mysql, form)
@@ -109,13 +130,24 @@ def comment():
     return redirect(f"{url_for('view', artid=form['artid'])}#comments")
 
 
-@app.route('/contacts')
+@app.route('/contacts', methods=['GET', 'POST'])
 def contacts():
+
+    sended = False
+    first_name = ''
+
+    if request.method == 'POST':
+        form = dict(request.form)
+        save_contact(mysql, form)
+        first_name = form['name'].split()[0]
+        sended = True
 
     toPage = {
         'site': SITE,
         'title': 'Faça contato',
-        'css': 'contacts.css'
+        'css': 'contacts.css',
+        'sended': sended,
+        'first_name': first_name
     }
     return render_template('contacts.html', page=toPage)
 
@@ -138,6 +170,7 @@ def page_not_found(e):
         'css': '404.css'
     }
     return render_template('404.html', page=toPage), 404
+
 
 @app.errorhandler(405)
 def not_permited(e):
