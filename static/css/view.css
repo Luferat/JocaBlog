@@ -52,6 +52,7 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto 1rem auto;
+    display: none;
 }
 
 .comment-form label {
@@ -118,4 +119,8 @@
     text-align: center;
     font-style: italic;
     line-height: 1.5;
+}
+
+.btn-login {
+    text-align: center;
 }

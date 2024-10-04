@@ -16,20 +16,25 @@
 <div class="comment-form" id="comments">
 
     <h3>Deixe seu comentário</h3>
-    <p class="required"><em>Todos os campos são obrigatótios!</em></p>
 
-    <form action="/comment" method="post">
+    <div class="comment-login" id="commentLogin">
+
+        <p>Você precisa estar logado com uma conta Google para comentar!</p>
+        <p class="btn-login">
+            <button type="button" id="btnLogin">
+                <i class="fa-brands fa-google fa-fw"></i>
+                Login com Google
+            </button>
+        </p>
+
+    </div>
+
+    <form action="/comment" method="post" id="commentForm">
         <input type="hidden" name="artid" value="{{ page.article.art_id }}">
+        <input type="hidden" name="name" id="name" value="Anonymous">
+        <input type="hidden" name="email" id="email" value="Anonymous">
 
-        <div class="comment-field">
-            <label for="name">Nome:</label>
-            <input type="text" name="name" required minlength="3">
-        </div>
-
-        <div class="comment-field">
-            <label for="email">E-mail:</label>
-            <input type="email" name="email" required>
-        </div>
+        <p class="required"><em>Todos os campos são obrigatórios!</em></p>
 
         <textarea name="comment" required minlength="5"></textarea>
 
@@ -43,7 +48,7 @@
 
 {% if page.total_comments == 0 %}
 
-    <p class="invitation">Nenhum comentário ainda?<br>Seja o primeiro a comentar!</p>
+<p class="invitation">Nenhum comentário ainda?<br>Seja o primeiro a comentar!</p>
 
 {% else %}
 

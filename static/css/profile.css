@@ -1,0 +1,54 @@
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.social i {
+    margin: .5rem 0;
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    margin: 0 0 1rem 1rem;
+}
+
+
+.profile {
+    display: table;
+    margin: auto;
+}
+
+.profile img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 200px;
+}
+
+.profile ul {
+    font-size: small;
+    padding-left: 1rem;
+    line-height: 1.6;
+}
+
+.profile-button {
+    text-align: center;
+}
+
+.profile-button button {
+    border: none;
+    background-color: steelblue;
+    color: white;
+    padding: .5rem 1rem;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+#toLogout {
+    background-color: orangered;
+}

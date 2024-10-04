@@ -26,8 +26,9 @@
         <header>
 
             <div>
-                <a href="/"><img src="{{ page.site.logo }}" alt="Logotipo de {{ page.site.name }}"></a>
+                <a href="/" class="logo"><img src="{{ page.site.logo }}" alt="Logotipo de {{ page.site.name }}"></a>
                 <h1>{{ page.site.name }}</h1>
+                <div id="authUser" data-action="login" class="auth-user"><img src="/static/img/user.png" alt="Logue-se!" referrerpolicy="no-referrer"></div>
             </div>
 
             <form action="/search" method="get">
@@ -68,6 +69,8 @@
 
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/js/layout.js"></script>
     {% if page.js %}

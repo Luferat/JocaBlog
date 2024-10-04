@@ -109,6 +109,7 @@ def view(artid):
         'site': SITE,
         'title': article['art_title'],
         'css': 'view.css',
+        'js': 'view.js',
         'article': article,  # Artigo a ser exibido
         'articles': articles,  # Artigos do autor
         'comments': comments,  # Comentários
@@ -124,8 +125,10 @@ def comment():
     # Obtém dados do formulario
     form = dict(request.form)
 
-    # Salva comentário no banco de dados
-    save_comment(mysql, form)
+    if len(form['name'].strip()) > 3 and len(form['email'].strip()) > 3:
+
+        # Salva comentário no banco de dados
+        save_comment(mysql, form)
 
     return redirect(f"{url_for('view', artid=form['artid'])}#comments")
 
@@ -146,10 +149,24 @@ def contacts():
         'site': SITE,
         'title': 'Faça contato',
         'css': 'contacts.css',
+        'js': 'contacts.js',
         'sended': sended,
         'first_name': first_name
     }
     return render_template('contacts.html', page=toPage)
+
+
+@app.route('/profile')
+def profile():
+
+    toPage = {
+        'site': SITE,
+        'title': 'Perfil do usuário',
+        'css': 'profile.css',
+        'js': 'profile.js'
+    }
+
+    return render_template('profile.html', page=toPage)
 
 
 @app.route('/about')
@@ -159,6 +176,7 @@ def about():
         'title': 'Sobre',
         'css': 'about.css'
     }
+
     return render_template('about.html', page=toPage)
 
 

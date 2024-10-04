@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block article %}
+
+<h2>Perfil do usuário</h2>
+
+<div class="alert">
+    <h4>Importate!</h4>
+    <p>Sua conta de usuário é gerenciada pelo Google. Qualquer alteração no seu perfil deve ser executado através do provedor...</p>
+</div>
+
+<div class="profile" id="profile">
+    <img src="/static/img/user.png" alt="Anonymous" referrerpolicy="no-referrer">
+    <h4>Usuário anônimo</h4>
+    <ul>
+        <li><strong>E-mail:</strong> <span id="email">Não informado</span></li>
+        <li><strong>ID:</strong> <span id="uid">Não informado</span></li>
+    </ul>    
+</div>
+
+<p>Clique no botão abaixo para ver/editar seu perfil:</p>
+
+<p class="profile-button">
+    <button type="button" id="toProfile"><i class="fa-brands fa-google fa-fw"></i> Ver/Editar perfil</a></button>
+</p>
+
+<p>Clique no botão abaixo para sair da sua conta neste navegador:</p>
+
+<p class="profile-button">
+    <button type="button" id="toLogout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Sair / Logout</a></button>
+</p>
+
+&nbsp;
+
+{% endblock %}
+
+
+{% block aside %}
+
+<h3><i class="fa-solid fa-plus"></i> Contatos</h3>
+
+<p>Acesse nossas redes sociais para saber mais sobre o <strong>{{ page.site.name }}</strong>.</p>
+
+<div class="social">
+
+    {% for social in page.site.social %}
+
+    <a href="{{ social.link }}" target="_blank" title="{{ social.name }}">{{ social.icon | safe }}</a>
+
+    {% endfor%}
+
+</div>
+
+<h3><i class="fa-solid fa-plus"></i> Sobre</h3>
+<nav>
+    <a href="/contacts">Faça contato</a>
+    <a href="/about">Sobre</a>
+    <a href="/privacy">Políticas de privacidade</a>
+</nav>
+
+{% endblock %}

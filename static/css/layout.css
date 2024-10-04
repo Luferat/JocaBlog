@@ -56,9 +56,11 @@ a:hover {
 #wrap>header>div {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
 }
 
-#wrap>header>div img {
+#wrap>header .logo img {
     height: 4rem;
     width: auto;
     display: block;
@@ -69,7 +71,7 @@ a:hover {
     margin: 0;
     color: orange;
     -webkit-text-stroke: .5px black;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 #wrap>header>form {
@@ -182,10 +184,6 @@ a:hover {
         justify-content: space-between;
     }
 
-    #wrap>header>div h1 {
-        font-size: 2rem;
-    }
-
     #wrap>header>form {
         border-top: none;
         border-left: 1px dotted white;
@@ -274,4 +272,17 @@ a:hover {
     color: red;
     font-size: small;
     font-style: italic;
+}
+
+.auth-user {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.auth-user img {
+    display: block;
+    margin-right: .5rem;
+    width: 2rem;
+    height: auto;
+    border-radius: 50%;
 }
