@@ -1,6 +1,3 @@
-from flask_mysqldb import MySQLdb
-
-
 def save_contact(mysql, form):
 
     sql = '''
@@ -10,7 +7,7 @@ def save_contact(mysql, form):
             %s, %s, %s, %s
         )
     '''
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur = mysql.connection.cursor()
     cur.execute(sql, (form['name'], form['email'],
                 form['subject'], form['message'], ))
     mysql.connection.commit()

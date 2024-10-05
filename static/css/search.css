@@ -1,0 +1,19 @@
+@import url('/static/css/home.css');
+
+.no-matches {
+    text-align: center;
+    line-height: 1.5;
+}
+
+.query-word {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.aside-article h4 {
+    margin: 0;
+}
+
+.aside-article small {
+    font-size: 70%;
+}

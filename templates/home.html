@@ -46,7 +46,7 @@
     {% for commented in page.most_commented %}
     <div class="aside-article" onclick="location.href = '/view/{{ commented.art_id }}'">
         <img src="{{ commented.art_thumbnail }}" alt="{{ commented.art_title }}">
-        <div>{{ commented.art_title }} <sup><small>{{ commented.total_comments }}</small></sup></div>
+        <div>{{ commented.art_title }}<sup><small>{{ commented.total_comments }}</small></sup></div>
     </div>
     {% endfor %}
 

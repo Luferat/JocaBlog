@@ -32,7 +32,7 @@
             </div>
 
             <form action="/search" method="get">
-                <input type="search" name="q" placeholder="Procurar...">
+                <input type="search" name="q" placeholder="Procurar..." minlength="3" required value="{{ page.query }}">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 

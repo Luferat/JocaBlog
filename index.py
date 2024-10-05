@@ -1,9 +1,12 @@
 # Importa as dependências do aplicativo
 from flask import Flask, redirect, render_template, request, url_for
-from flask_mysqldb import MySQL, MySQLdb
+from flask_mysqldb import MySQL
 from functions.articles import *
 from functions.comments import *
-from functions.contacts import save_contact
+from functions.contacts import *
+from functions.search import *
+import html
+
 
 # Constantes do site
 SITE = {
@@ -37,13 +40,26 @@ SITE = {
 app = Flask(__name__)
 
 # Configurações de acesso ao MySQL
-app.config['MYSQL_HOST'] = 'localhost'  # Servidor do MySQL
-app.config['MYSQL_USER'] = 'root'       # Usuário do MySQL
-app.config['MYSQL_PASSWORD'] = ''       # Senha do MySQL
-app.config['MYSQL_DB'] = 'jocablogdb'   # Nome da base de dados
+app.config['MYSQL_HOST'] = 'localhost'          # Servidor do MySQL
+app.config['MYSQL_USER'] = 'root'               # Usuário do MySQL
+app.config['MYSQL_PASSWORD'] = ''               # Senha do MySQL
+app.config['MYSQL_DB'] = 'jocablogdb'           # Nome da base de dados
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'  # REtorna dados como DICT
 
 # Variável de conexão com o MySQL
 mysql = MySQL(app)
+
+
+# Configura a conexão com o MySQL para usar utf8mb4 e português do Brasil
+@app.before_request
+def before_request():
+    cur = mysql.connection.cursor()
+    cur.execute("SET NAMES utf8mb4")
+    cur.execute("SET character_set_connection=utf8mb4")
+    cur.execute("SET character_set_client=utf8mb4")
+    cur.execute("SET character_set_results=utf8mb4")
+    cur.execute("SET lc_time_names = 'pt_BR'")
+    cur.close()
 
 
 ######################
@@ -178,6 +194,30 @@ def about():
     }
 
     return render_template('about.html', page=toPage)
+
+
+@app.route('/search')
+def search():
+
+    query = html.escape(request.args.get('q').strip())
+
+    if len(query) == 0:
+        return page_not_found(404)
+
+    articles = search_articles(mysql, query)
+
+    comments = search_comments(mysql, query)
+
+    toPage = {
+        'site': SITE,
+        'title': f'Resultados de "{query}"',
+        'css': 'search.css',
+        'query': query,
+        'articles': articles,
+        'comments': comments
+    }
+
+    return render_template('search.html', page=toPage)
 
 
 @app.errorhandler(404)
