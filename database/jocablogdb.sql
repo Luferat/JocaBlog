@@ -12,7 +12,7 @@ CREATE DATABASE jocablogdb
     -- Usando o conjunto de caracteres UTF-8
     CHARACTER SET utf8mb4
     -- Buscas em UTF-8 e case insensitive
-    COLLATE utf8mb4_general_ci;
+    COLLATE utf8mb4_unicode_ci;
 
 -- Seleciona o banco de dados para os próximos comandos
 USE jocablogdb;

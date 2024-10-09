@@ -1,4 +1,5 @@
 # Importa as dependências do aplicativo
+import sys
 from flask import Flask, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL
 from functions.articles import *
@@ -7,6 +8,7 @@ from functions.contacts import *
 from functions.search import *
 import html
 
+sys.setdefaultencoding('utf-8')
 
 # Constantes do site
 SITE = {
@@ -40,11 +42,13 @@ SITE = {
 app = Flask(__name__)
 
 # Configurações de acesso ao MySQL
-app.config['MYSQL_HOST'] = 'localhost'          # Servidor do MySQL
-app.config['MYSQL_USER'] = 'root'               # Usuário do MySQL
-app.config['MYSQL_PASSWORD'] = ''               # Senha do MySQL
-app.config['MYSQL_DB'] = 'jocablogdb'           # Nome da base de dados
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'  # REtorna dados como DICT
+app.config['MYSQL_HOST'] = 'localhost'              # Servidor do MySQL
+app.config['MYSQL_USER'] = 'root'                   # Usuário do MySQL
+app.config['MYSQL_PASSWORD'] = ''                   # Senha do MySQL
+app.config['MYSQL_DB'] = 'jocablogdb'               # Nome da base de dados
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'      # REtorna dados como DICT
+app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'    # CRUD em UTF-8
+
 
 # Variável de conexão com o MySQL
 mysql = MySQL(app)
