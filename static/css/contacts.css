@@ -1,0 +1,63 @@
+#contacts {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 550px;
+}
+
+.required {
+    text-align: center;
+    color: red;
+    font-style: italic;
+    font-size: small;
+}
+
+#contacts label {
+    display: block;
+    padding: 0 0 .25rem .25rem;
+}
+
+#contacts input,
+#contacts textarea,
+#contacts button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#contacts input,
+#contacts textarea {
+    padding: .5rem;
+    width: 100%;
+    border: 1px solid red;
+    background-color: rgb(255, 235, 235);
+}
+
+#contacts textarea {
+    resize: vertical;
+    height: 6rem;
+}
+
+#contacts button {
+    padding: .5rem 1rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    pointer-events: none;
+}
+
+#contacts input:valid,
+#contacts textarea:valid {
+    border: 1px solid blue;
+    background-color: rgb(232, 240, 254);
+}
+
+#contacts:valid button {
+    background-color: steelblue;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.success {
+    display: table;
+    margin: auto;
+}

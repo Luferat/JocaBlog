@@ -2,11 +2,10 @@
 from flask import Flask, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL, MySQLdb
 
-# Importa as funções do banco de dados, tabela article
+# Importa as funções do banco de dados
 from functions.db_articles import *
-
-# Importa as funções do banco de dados, tabela comment
 from functions.db_comments import *
+from functions.db_contacts import save_contact
 
 # Constantes do site
 SITE = {
@@ -128,13 +127,36 @@ def comment():
     return redirect(f"{url_for('view', artid=form['artid'])}#comments")
 
 
-@app.route('/contacts')  # Rota para a página de contatos → /contacts
+@app.route('/contacts', methods = ['GET', 'POST'])  # Rota para a página de contatos → /contacts
 def contacts():
+
+    # Formulário enviado com sucesso
+    success = False
+
+    # Primeiro nome do remetente
+    first_name = ''
+
+    # Se o formulário foi enviado...
+    if request.method == 'POST':
+
+        # Obtém os dados do formulário
+        form = dict(request.form)
+
+        # Teste de "mesa"
+        # print('\n\n\n', form, '\n\n\n')
+
+        # Salva os dados no banco de dados
+        success = save_contact(mysql, form)
+
+        # Otém o primeiro nome do remetente
+        first_name = form['name'].split()[0]
 
     toPage = {
         'site': SITE,
         'title': 'Faça contato',
-        'css': 'home.css'
+        'css': 'contacts.css',
+        'success': success,
+        'first_name': first_name
     }
 
     return render_template('contacts.html', page=toPage)

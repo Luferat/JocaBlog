@@ -3,8 +3,55 @@
 {% block article %}
 
 <h2>Faça Contato</h2>
-<p>Preencha os campos abaixo para entrar em contato conosco.</p>
-<p>Formulário</p>
+
+{% if page.success %}
+
+<div class="success">
+    <h3>Olá {{ page.first_name }}!</h3>
+    <blockquote>Seu contato foi enviado...</blockquote>
+    <p><em>Obrigado.</em></p>
+</div>
+
+{% else %}
+
+<form action="/contacts" method="post" id="contacts">
+
+    <p>Preencha todos os campos abaixo para entrar em contato conosco.</p>
+
+    <p class="required">Todos os campos são obrigatórios.</p>
+
+    <p>
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" required minlength="3">
+    </p>
+
+    <p>
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" required>
+    </p>
+
+    <p>
+        <label for="subject">Assunto:</label>
+        <input type="text" name="subject" id="subject" required minlength="5">
+    </p>
+
+    <p>
+        <label for="message">Mensagem:</label>
+        <textarea name="message" id="message" required minlength="5"></textarea>
+    </p>
+
+    <p>
+        <button type="submit">Enviar</button>
+        <small>&larr; Clique somente uma vez.</small>
+    </p>
+
+</form>
+
+{% endif %}
+
+<script>
+    if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+</script>
 
 {% endblock %}
 
