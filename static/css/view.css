@@ -1,5 +1,10 @@
 /* Folhas de estilo de `view.html` */
 
+#commentForm,
+#makeLogin {
+    display: none;
+}
+
 .author-date {
     background-color: #ddd;
     padding: .25rem;
@@ -143,4 +148,13 @@
 .comment-box div {
     padding: .5rem;
     font-size: 90%;
+}
+
+/* Botão de login */
+#loginGoogle {
+    background-color: steelblue;
+    display: block;
+    margin: auto;
+    pointer-events: all;
+    cursor: pointer;
 }

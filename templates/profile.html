@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block article %}
+
+<div id="logged">
+
+    <img src="/static/img/user.png" alt="Usuário anônimo" referrerpolicy="no-referrer">
+    <h4>Usuário anônimo</h4>
+    <ul>
+        <li id="id">Sem Id</li>
+        <li id="email">anonimous@email.com</li>
+        <li id="registered">00/00/0000</li>
+        <li id="lastLogin">00/00/0000</li>
+    </ul>
+    <p>Sua conta é gerenciada pelo Google. Para editar seu perfil, clique no botão abaixo:</p>
+    <p class="center">
+        <button id="toGoogle"><i class="fa-brands fa-google fa-fw"></i> Ver perfil no Google</button>
+    </p>
+    <p>Clique no botão baixo para sair do aplicativo neste computador:</p>
+    <p class="center">
+        <button id="btnLogout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout / Sair</button>
+    </p>
+
+</div>
+
+<div id="notLogged">
+    <h2>Perfil de usuário</h2>
+    <p>Logue-se para ver o seu perfil no {{ page.site.name }}.</p>
+    <p class="center">
+        <button id="btnLogin"><i class="fa-brands fa-google fa-fw"></i> Logue-se com o Google</button>
+    </p>
+</div>
+
+{% endblock %}
+
+
+{% block aside %}
+
+<h3>Saiba +</h3>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+{% endblock %}

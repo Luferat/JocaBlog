@@ -20,21 +20,33 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log('Logado', user)
+        // Troca a ação do botão para 'profile'
+        $('#btnUser').attr({ 'data-action': 'profile' });
+        // Troca para a imagem do usuário
+        $('#btnUser img').attr({
+            'src': user.photoURL,
+            'alt': user.displayName
+        });
     } else {
-        console.log('Não tá logado!')
+        // Troca a ação do botão para 'login'
+        $('#btnUser').attr({ 'data-action': 'login' });
+        // Troca para a imagem do usuário
+        $('#btnUser img').attr({
+            'src': '/static/img/user.png',
+            'alt': 'Logue-se'
+        });
     }
 });
 
 // Fazendo login
 function login() {
     // Faz login pelo Google usando Popup
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithPopup(provider);
 }
 
 // Fazendo logout
 function logout() {
-    firebase.auth().signOut()
+    firebase.auth().signOut();
 }
 
 // Excluir conta do uduário
@@ -60,8 +72,11 @@ function userToggle() {
     if ($('#btnUser').attr('data-action') == 'login') {
 
         // Se for login, executa o login
-        login()
+        login();
     } else {
+
+        // Temporário: faz logout
+        // logout();
 
         // Mostra o perfil do usuário
         location.href = '/profile';
