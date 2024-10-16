@@ -32,26 +32,38 @@ function login() {
     firebase.auth().signInWithPopup(provider)
 }
 
-login()
+// Fazendo logout
+function logout() {
+    firebase.auth().signOut()
+}
 
-/*
+// Excluir conta do uduário
+function userRemove() {
+    const user = firebase.auth().currentUser;
+    user.delete();
+}
 
+// Iniciaiza jQuery
+$(document).ready(myApp);
 
-// logout
-firebase.auth().signOut().then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});
+// Aplicativo principal
+function myApp() {
 
-// Excluir conta do usuario
-const user = firebase.auth().currentUser;
+    // Monitora cliques no botão login/logout
+    $('#btnUser').click(userToggle);
 
-user.delete().then(() => {
-  // User deleted.
-}).catch((error) => {
-  // An error ocurred
-  // ...
-});
+}
 
-*/
+// Login / Logout do usuário
+function userToggle() {
+    // Lê o atributo 'data-action' do elemento '#btnUser'
+    if ($('#btnUser').attr('data-action') == 'login') {
+
+        // Se for login, executa o login
+        login()
+    } else {
+
+        // Mostra o perfil do usuário
+        location.href = '/profile';
+    }
+}
