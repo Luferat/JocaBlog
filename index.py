@@ -1,14 +1,11 @@
 # Importa as dependências do aplicativo
 from flask import Flask, redirect, render_template, request, url_for
-from flask_mysqldb import MySQL, MySQLdb
+from flask_mysqldb import MySQL
 
 # Importa as funções do banco de dados
 from functions.db_articles import *
 from functions.db_comments import *
 from functions.db_contacts import save_contact
-
-# Envio de e-mails
-from flask_mail import Mail, Message
 
 # Constantes do site
 SITE = {
@@ -27,22 +24,13 @@ app.config['MYSQL_USER'] = 'root'       # Usuário do MySQL
 app.config['MYSQL_PASSWORD'] = ''       # Senha do MySQL
 app.config['MYSQL_DB'] = 'jocablogdb'   # Nome da base de dados
 
-# Configurações do servidor de e-mail
-app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'luferatinho@outlook.com'
-app.config['MAIL_PASSWORD'] = 'Senha123456'
-
 # Variável de conexão com o MySQL
 mysql = MySQL(app)
-
-# Objeto de envio de e-mails
-mail = Mail(app)
 
 ######################
 # Rotas da aplicação #
 ######################
+
 
 @app.route('/')  # Rota para a página inicial → raiz
 def home():
@@ -139,7 +127,8 @@ def comment():
     return redirect(f"{url_for('view', artid=form['artid'])}#comments")
 
 
-@app.route('/contacts', methods = ['GET', 'POST'])  # Rota para a página de contatos → /contacts
+# Rota para a página de contatos → /contacts
+@app.route('/contacts', methods=['GET', 'POST'])
 def contacts():
 
     # Formulário enviado com sucesso
@@ -163,15 +152,6 @@ def contacts():
         # Otém o primeiro nome do remetente
         first_name = form['name'].split()[0]
 
-        # Envia e-mail para o admin
-        msg = Message(
-            subject=form['subject'],
-            sender=app.config['MAIL_USERNAME'],
-            recipients=[app.config['MAIL_USERNAME']],
-            body= f'Foi enviado um contato para JocaBlog:\n\n{form['message']}'
-        )
-        mail.send(msg)
-    
     toPage = {
         'site': SITE,
         'title': 'Faça contato',
