@@ -3,12 +3,13 @@
 {% block article %}
 
 <div id="logged">
+ 
+    <h2>Usuário anônimo</h2>
 
     <img src="/static/img/user.png" alt="Usuário anônimo" referrerpolicy="no-referrer">
-    <h4>Usuário anônimo</h4>
+    <div id="email">anonimous@email.com</div>
+    <small id="id">Sem Id</small>
     <ul>
-        <li id="id">Sem Id</li>
-        <li id="email">anonimous@email.com</li>
         <li id="registered">00/00/0000</li>
         <li id="lastLogin">00/00/0000</li>
     </ul>
@@ -36,7 +37,16 @@
 
 {% block aside %}
 
-<h3>Saiba +</h3>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+<h3>Links úteis</h3>
+
+<ul>
+    <li><a href="/about">Sobre...</a></li>
+    <li><a href="/contacts">Faça contato</a></li>
+    <li><a href="/policies">Sua privacidade</a></li>
+</ul>
+&nbsp;
+
+<h3>Comentários recentes</h3>
+
 
 {% endblock %}

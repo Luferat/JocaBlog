@@ -7,9 +7,9 @@ firebase.auth().onAuthStateChanged((user) => {
             'src': user.photoURL,
             'alt': user.displayName
         })
-        $('#logged h4').html(user.displayName)
-        $('#id').html('ID: ' + user.uid)
-        $('#email').html('E-mail: ' + user.email)
+        $('#logged h2').html(user.displayName)
+        $('#id').html('ID → ' + user.uid)
+        $('#email').html(user.email)
         $('#registered').html('Cadastrado em ' + dateConvert(user.metadata.creationTime))
         $('#lastLogin').html('Último login em ' + dateConvert(user.metadata.lastSignInTime))
         $('#notLogged').hide()
