@@ -61,3 +61,24 @@
     display: table;
     margin: auto;
 }
+
+.aside-social {
+    display: table;
+    margin: 0 auto 1rem auto;
+    list-style: none;
+    padding: 0;
+}
+
+.aside-social li {
+    margin-bottom: .25rem;
+}
+
+.aside-social a {
+    display: flex;
+    align-items: center;
+}
+
+.aside-social i {
+    font-size: 1.8rem;
+    margin-right: .5rem;
+}

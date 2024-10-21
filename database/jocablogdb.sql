@@ -46,6 +46,10 @@ CREATE TABLE article (
     FOREIGN KEY (art_author) REFERENCES staff (sta_id)
 );
 
+-- IMPORTANTE!
+-- Somente 'article' com `art_status = 'on' AND art_date <= NOW()` podem ser 
+-- obtidos para todas as consultas relacionadas ao front-end.
+
 -- Cria a tabela "comment"
 CREATE TABLE comment (
     com_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -57,6 +61,10 @@ CREATE TABLE comment (
     com_status ENUM('on', 'off', 'del') DEFAULT 'on',
     FOREIGN KEY (com_article) REFERENCES article (art_id)
 );
+
+-- IMPORTANTE!
+-- Somente 'comment' com `com_status = 'on' podem ser obtidos para todas as
+-- consultas relacionadas ao front-end.
 
 -- Cria a tabela "contact"
 CREATE TABLE contact (

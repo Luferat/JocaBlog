@@ -15,6 +15,29 @@ SITE = {
     'favicon': '/static/img/favicon.png'
 }
 
+# Lista de redes sociais
+SOCIAL = (
+    {
+        'name': 'Facebook',
+        'link': 'https://facebook.com/jocablog',
+        'icon': '<i class="fa-brands fa-square-facebook fa-fw"></i>'
+    },
+    {
+        'name': 'Linkedin',
+        'link': 'https://linkedin.com/in/jocablog',
+        'icon': '<i class="fa-brands fa-linkedin fa-fw"></i>'
+    },
+    {
+        'name': 'Youtube',
+        'link': 'https://youtube.com/jocablog',
+        'icon': '<i class="fa-brands fa-square-youtube fa-fw"></i>'
+    }, {
+        'name': 'GitHub.com',
+        'link': 'https://github.com/jocablog',
+        'icon': '<i class="fa-brands fa-square-github fa-fw"></i>'
+    },
+)
+
 # Cria uma aplicação Flask usando uma instância do Flask
 app = Flask(__name__)
 
@@ -38,6 +61,9 @@ def home():
     # Obtém todos os artigos
     articles = get_all(mysql)
 
+    # Obtém artigos mais comentados
+    commenteds = most_commented(mysql)
+
     # Somente para debug
     # print('\n\n\n', articles, '\n\n\n')
 
@@ -50,7 +76,8 @@ def home():
         'css': 'home.css',  # Folhas de estilo desta página (opcional)
         'js': 'home.js',  # JavaScript desta página (opcional)
         # Outras chaves usadas pela página
-        'articles': articles
+        'articles': articles,
+        'commenteds': commenteds
     }
 
     # Renderiza template passando a variável local `toPage`
@@ -162,7 +189,8 @@ def contacts():
         'css': 'contacts.css',
         'js': 'contacts.js',
         'success': success,
-        'first_name': first_name
+        'first_name': first_name,
+        'social': SOCIAL
     }
 
     return render_template('contacts.html', page=toPage)
@@ -177,6 +205,14 @@ def about():
     }
 
     return render_template('about.html', page=toPage)
+
+@app.route('/privacy')
+def privacy():
+    toPage = {
+        'site': SITE,
+        'title': 'Políticas de Privacidade'
+    }
+    return render_template('privacy.html', page=toPage)
 
 
 @app.route('/profile')
@@ -204,6 +240,36 @@ def page_not_found(e):
 @app.errorhandler(405)
 def page_not_found(e):
     return 'Bizonhou!!'
+
+
+@app.route('/search')
+def search():
+
+    # Obtém o termo a ser procurado
+    query = request.args.get('q')
+
+    # Obtém todos o artigos contendo o termo
+    articles = articles_search(mysql, query)
+
+    # Quantos resultados foram encontrados
+    total = len(articles)
+
+    # Artigos mais recentes para a aside
+    recents = get_all(mysql, 4)
+
+    # print('\n\n\n', total, articles, '\n\n\n')
+
+    toPage = {
+        'title': 'Procura',
+        'site': SITE,
+        'css': 'home.css',
+        'articles': articles,
+        'total': total,
+        'query': query,
+        'recents': recents
+    }
+
+    return render_template('/search.html', page=toPage)
 
 
 if __name__ == '__main__':
