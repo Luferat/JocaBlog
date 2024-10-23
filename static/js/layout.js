@@ -41,12 +41,26 @@ firebase.auth().onAuthStateChanged((user) => {
 // Fazendo login
 function login() {
     // Faz login pelo Google usando Popup
-    firebase.auth().signInWithPopup(provider);
+    firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            var credential = result.credential;
+            var token = credential.accessToken;
+            var user = result.user;
+            var userObj = {
+                name: user.displayName,
+                email: user.email,
+                userid: user.uid,
+                photo: user.photoURL
+            }
+            // Cria cookie com dados do usuário do Google
+            setCookie('userData', JSON.stringify(userObj), 365)
+        });
 }
 
 // Fazendo logout
 function logout() {
     firebase.auth().signOut();
+    // Apaga cookie com dados do usuário do Google
 }
 
 // Excluir conta do uduário
@@ -81,4 +95,16 @@ function userToggle() {
         // Mostra o perfil do usuário
         location.href = '/profile';
     }
+}
+
+
+// Cria um cookie
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Converte dias em milissegundos
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }

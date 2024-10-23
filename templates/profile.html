@@ -3,7 +3,7 @@
 {% block article %}
 
 <div id="logged">
- 
+
     <h2>Usuário anônimo</h2>
 
     <img src="/static/img/user.png" alt="Usuário anônimo" referrerpolicy="no-referrer">
@@ -44,9 +44,25 @@
     <li><a href="/contacts">Faça contato</a></li>
     <li><a href="/policies">Sua privacidade</a></li>
 </ul>
-&nbsp;
 
+
+{% if page.comments != () %}
+&nbsp;
 <h3>Comentários recentes</h3>
 
+<div class="aside-comments">
+
+    {% for comment in page.comments %}
+
+    <div>
+        <h4><a href="/view/{{ comment.com_article }}#comments">{{ comment.art_title }}</a></h4>
+        {{ comment.com_comment }}
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
 
 {% endblock %}

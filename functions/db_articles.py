@@ -160,3 +160,20 @@ def most_commented(mysql, limit=4):
     cur.close()
 
     return articles
+
+
+def most_viewed(mysql, limit=4):
+    sql = '''
+        SELECT art_id, art_title, art_thumbnail
+        FROM article
+        WHERE art_status = 'on'
+            AND art_date <= NOW()
+        ORDER BY art_view DESC, art_date DESC
+        LIMIT %s
+    '''
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(sql, (limit,))
+    articles = cur.fetchall()
+    cur.close()
+
+    return articles

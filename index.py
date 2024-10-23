@@ -7,6 +7,8 @@ from functions.db_articles import *
 from functions.db_comments import *
 from functions.db_contacts import save_contact
 
+import json
+
 # Constantes do site
 SITE = {
     'name': 'JocaBlog',
@@ -47,6 +49,14 @@ app.config['MYSQL_USER'] = 'root'       # Usuário do MySQL
 app.config['MYSQL_PASSWORD'] = ''       # Senha do MySQL
 app.config['MYSQL_DB'] = 'jocablogdb'   # Nome da base de dados
 
+'''
+# Configurações de acesso ao MySQL do provedor
+app.config['MYSQL_HOST'] = 'Luferat.mysql.pythonanywhere-services.com'
+app.config['MYSQL_USER'] = 'Luferat'
+app.config['MYSQL_PASSWORD'] = 'Mysqlp4ssw0rd'
+app.config['MYSQL_DB'] = 'Luferat$default'
+'''
+
 # Variável de conexão com o MySQL
 mysql = MySQL(app)
 
@@ -64,6 +74,9 @@ def home():
     # Obtém artigos mais comentados
     commenteds = most_commented(mysql)
 
+    # Artigos mais visitados
+    vieweds = most_viewed(mysql)
+
     # Somente para debug
     # print('\n\n\n', articles, '\n\n\n')
 
@@ -77,7 +90,8 @@ def home():
         'js': 'home.js',  # JavaScript desta página (opcional)
         # Outras chaves usadas pela página
         'articles': articles,
-        'commenteds': commenteds
+        'commenteds': commenteds,
+        'vieweds': vieweds
     }
 
     # Renderiza template passando a variável local `toPage`
@@ -206,6 +220,7 @@ def about():
 
     return render_template('about.html', page=toPage)
 
+
 @app.route('/privacy')
 def privacy():
     toPage = {
@@ -217,11 +232,24 @@ def privacy():
 
 @app.route('/profile')
 def profile():
+
+    # recebe o cookie do front-end
+    userJSON = request.cookies.get('userData') 
+
+    # converte o cookie para DICT
+    user = json.loads(userJSON)
+
+    # Obtém todos os comentários deste email
+    comments = user_coments(mysql, user['email'], 6)
+
+    # print('\n\n\n', comments, '\n\n\n')
+
     toPage = {
         'site': SITE,
         'title': 'Pefil do usuário',
         'css': 'profile.css',
-        'js': 'profile.js'
+        'js': 'profile.js',
+        'comments': comments
     }
 
     return render_template('profile.html', page=toPage)
