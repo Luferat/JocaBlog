@@ -212,10 +212,14 @@ def contacts():
 
 @app.route('/about')
 def about():
+    
+    articles = get_all(mysql, 4)
+    
     toPage = {
         'site': SITE,
         'title': 'Sobre',
-        'css': 'about.css'
+        'css': 'about.css',
+        'articles': articles
     }
 
     return render_template('about.html', page=toPage)
@@ -223,9 +227,13 @@ def about():
 
 @app.route('/privacy')
 def privacy():
+    
+    articles = get_random(mysql)
+    
     toPage = {
         'site': SITE,
-        'title': 'Políticas de Privacidade'
+        'title': 'Políticas de Privacidade',
+        'articles': articles
     }
     return render_template('privacy.html', page=toPage)
 

@@ -61,7 +61,7 @@
     display: table;
     margin: auto;
 }
-
+/* 
 .aside-social {
     display: table;
     margin: 0 auto 1rem auto;
@@ -81,4 +81,16 @@
 .aside-social i {
     font-size: 1.8rem;
     margin-right: .5rem;
+} 
+*/
+
+.aside-social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.aside-social a {
+    font-size: 3.5rem;
 }
