@@ -12,28 +12,26 @@
 <div class="comment-form" id="comments">
 
     <h3>Comente!</h3>
-    <p class="required">Todos os campos são obrigatórios!</p>
 
-    <form action="/comment" method="post">
+    <form action="/comment" method="post" id="commentForm">
+        <p class="required">Todos os campos são obrigatórios!</p>
         <input type="hidden" name="artid" value="{{ page.article['art_id'] }}">
-
-        <div class="comment-field">
-            <label for="name">Nome:</label>
-            <input type="text" name="name" id="name" required minlength="3">
-        </div>
-
-        <div class="comment-field">
-            <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-
+        <input type="hidden" name="name" value="" id="commentName">
+        <input type="hidden" name="email" value="" id="commentEmail">
         <textarea name="comment" required minlength="5"></textarea>
-
         <div>
             <button type="submit">Enviar</button>
             <small>&larr; Clique somente uma vez</small>
         </div>
     </form>
+
+    <div id="makeLogin">
+        <p>Você precisa estar logado para comentar. Logue-se usando sua conta Google / Gmail.</p>
+        <p class="btn-center">
+            <button id="loginGoogle" onclick="login()"><i class="fa-brands fa-google fa-fw"></i> Logue-se com o Google</button>
+        </p>
+
+    </div>
 
 </div>
 

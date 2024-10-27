@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block article %}
+
+{% if page.total == 0 %}
+
+<h2>Procurando por "{{ page.query }}"</h2>
+<p class="center"><em>Não encontrei nada contendo "{{ page.query }}"!</em></p>
+
+{% else %}
+
+{% if page.total == 1 %}
+<h3>{{ page.total }} resultado encontrado</h3>
+{% else %}
+<h3>{{ page.total }} resultados encontrados</h3>
+{% endif %}
+
+<div class="article-grid">
+
+{% for article in page.articles %}
+
+<div class="article-box" onclick="location.href = '/view/{{ article.art_id }}'">
+    <img src="{{ article.art_thumbnail }}" alt="{{ article['art_title'] }}">
+    <div>
+        <h4>{{ article['art_title'] }}</h4>
+        <small>{{ article['art_resume'] }}</small>
+    </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+
+{% block aside %}
+
+<h3>Links úteis</h3>
+<ul>
+    <li><a href="/about">Sobre...</a></li>
+    <li><a href="/contacts">Faça contato</a></li>
+    <li><a href="/policies">Sua privacidade</a></li>
+</ul>
+&nbsp;
+
+<h3>Artigos recentes</h3>
+<div class="aside-grid">
+
+    {% for article in page.recents %}
+
+    <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
+        <img src="{{ article['art_thumbnail'] }}" alt="{{ article['art_title'] }}">
+        <div>{{ article['art_title'] }}</div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

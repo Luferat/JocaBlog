@@ -28,10 +28,13 @@
             <div>
                 <a href="/"><img src="{{ page.site.logo }}" alt="Logotipo de {{ page.site.name }}"></a>
                 <h1>{{ page.site.name }}</h1>
+                <span id="btnUser" data-action="login">
+                    <img src="/static/img/user.png" alt="Logue-se" referrerpolicy="no-referrer">
+                </span>
             </div>
 
             <form action="/search" method="get">
-                <input type="search" name="q" placeholder="Procurar...">
+                <input type="search" name="q" placeholder="Procurar..." value="{{ page.query }}">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
@@ -68,6 +71,8 @@
 
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/js/layout.js"></script>
     {% if page.js %}

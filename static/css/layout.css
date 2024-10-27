@@ -56,9 +56,11 @@ a:hover {
 #wrap>header>div {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
 }
 
-#wrap>header>div img {
+#wrap>header>div>a>img {
     height: 4rem;
     width: auto;
     display: block;
@@ -69,7 +71,19 @@ a:hover {
     margin: 0;
     color: orange;
     -webkit-text-stroke: .5px black;
-    font-size: 2.5rem;
+    font-size: 2rem;
+}
+
+#wrap>header>div>span {
+    margin-left: auto;
+}
+
+#wrap>header>div>span>img {
+    width: 3rem;
+    margin-right: 1rem;
+    display: block;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 #wrap>header>form {
@@ -175,15 +189,11 @@ a:hover {
     margin-top: .25rem;
 }
 
-@media screen and (min-width: 575px) {
+@media screen and (min-width: 625px) {
 
     #wrap>header {
         flex-direction: row;
         justify-content: space-between;
-    }
-
-    #wrap>header>div h1 {
-        font-size: 2rem;
     }
 
     #wrap>header>form {
@@ -279,4 +289,12 @@ a:hover {
 
 .small {
     font-size: small;
+}
+
+.banner {
+    display: block;
+    margin: auto;
+    border-radius: .3rem;
+    width: 100%;
+    max-width: 400px;
 }
