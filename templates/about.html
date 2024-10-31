@@ -38,7 +38,7 @@
 <h3>Links úteis</h3>
 
 <ul>
-    <li><a href="/policies">Sua privacidade</a></li>
+    <li><a href="/privacy">Sua privacidade</a></li>
     <li><a href="/contacts">Faça contato</a></li>
 </ul>
 
@@ -48,7 +48,7 @@
 
 <div class="aside-grid">
 
-    {% for article in page.articles %}
+    {% for article in articles %}
 
     <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
         <img src="{{ article.art_thumbnail }}" alt="{{ article.art_title }}">

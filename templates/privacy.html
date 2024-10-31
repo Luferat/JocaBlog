@@ -4,7 +4,7 @@
 
 <h2>Política de Privacidade</h2>
 
-<img src="/static/img/policies.jpg" alt="Política de Privacidade" class="banner">
+<img src="/static/img/privacy.jpg" alt="Política de Privacidade" class="banner">
 
 <p>Bem-vindo ao JocaBlog. Estamos comprometidos em proteger sua privacidade e garantir que suas informações pessoais sejam protegidas.</p>
 
@@ -51,7 +51,7 @@
 
 <div class="aside-grid">
 
-    {% for article in page.articles %}
+    {% for article in articles %}
 
     <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
         <img src="{{ article.art_thumbnail }}" alt="{{ article.art_title }}">

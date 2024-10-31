@@ -65,24 +65,12 @@ mysql = MySQL(app)
 ######################
 
 
-@app.route('/')  # Rota para a página inicial → raiz
+@app.route('/')
 def home():
-
-    # Obtém todos os artigos
     articles = get_all(mysql)
-
-    # Obtém artigos mais comentados
     commenteds = most_commented(mysql)
-
-    # Artigos mais visitados
     vieweds = most_viewed(mysql)
-
-    # Somente para debug
-    # print('\n\n\n', articles, '\n\n\n')
-
-    # Passa parâmetros para o template
-    # 'css' e 'js' são opcionais
-    toPage = {
+    page = {
         # Título da página → <title></title>
         'site': SITE,
         'title': '',
@@ -93,10 +81,8 @@ def home():
         'commenteds': commenteds,
         'vieweds': vieweds
     }
-
-    # Renderiza template passando a variável local `toPage`
-    # para o template como `page`.
-    return render_template('home.html', page=toPage)
+    # Renderiza template passando a variável local `page` para o template como `page`.
+    return render_template('home.html', **page)
 
 
 @app.route('/view/<artid>')  # Rota para a página que exibe o artigo completo
@@ -143,7 +129,7 @@ def view(artid):
 
     # print('\n\n\n', comments, '\n\n\n')
 
-    toPage = {
+    page = {
         'site': SITE,
         'title': article['art_title'],
         'css': 'view.css',
@@ -154,7 +140,7 @@ def view(artid):
         'total_comments': total_comments
     }
 
-    return render_template('view.html', page=toPage)
+    return render_template('view.html', **page)
 
 
 @app.route('/comment', methods=['POST'])
@@ -197,7 +183,7 @@ def contacts():
         # Otém o primeiro nome do remetente
         first_name = form['name'].split()[0]
 
-    toPage = {
+    page = {
         'site': SITE,
         'title': 'Faça contato',
         'css': 'contacts.css',
@@ -207,42 +193,42 @@ def contacts():
         'social': SOCIAL
     }
 
-    return render_template('contacts.html', page=toPage)
+    return render_template('contacts.html', **page)
 
 
 @app.route('/about')
 def about():
-    
+
     articles = get_all(mysql, 4)
-    
-    toPage = {
+
+    page = {
         'site': SITE,
         'title': 'Sobre',
         'css': 'about.css',
         'articles': articles
     }
 
-    return render_template('about.html', page=toPage)
+    return render_template('about.html', **page)
 
 
 @app.route('/privacy')
 def privacy():
-    
+
     articles = get_random(mysql)
-    
-    toPage = {
+
+    page = {
         'site': SITE,
         'title': 'Políticas de Privacidade',
         'articles': articles
     }
-    return render_template('privacy.html', page=toPage)
+    return render_template('privacy.html', **page)
 
 
 @app.route('/profile')
 def profile():
 
     # recebe o cookie do front-end
-    userJSON = request.cookies.get('userData') 
+    userJSON = request.cookies.get('userData')
 
     # converte o cookie para DICT
     user = json.loads(userJSON)
@@ -252,7 +238,7 @@ def profile():
 
     # print('\n\n\n', comments, '\n\n\n')
 
-    toPage = {
+    page = {
         'site': SITE,
         'title': 'Pefil do usuário',
         'css': 'profile.css',
@@ -260,17 +246,17 @@ def profile():
         'comments': comments
     }
 
-    return render_template('profile.html', page=toPage)
+    return render_template('profile.html', **page)
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    toPage = {
+    page = {
         'title': 'Erro 404',
         'site': SITE,
         'css': '404.css'
     }
-    return render_template('404.html', page=toPage), 404
+    return render_template('404.html', **page), 404
 
 
 @app.errorhandler(405)
@@ -295,7 +281,7 @@ def search():
 
     # print('\n\n\n', total, articles, '\n\n\n')
 
-    toPage = {
+    page = {
         'title': 'Procura',
         'site': SITE,
         'css': 'home.css',
@@ -305,7 +291,7 @@ def search():
         'recents': recents
     }
 
-    return render_template('/search.html', page=toPage)
+    return render_template('/search.html', **page)
 
 
 if __name__ == '__main__':

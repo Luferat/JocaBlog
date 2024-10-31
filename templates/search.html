@@ -2,22 +2,22 @@
 
 {% block article %}
 
-{% if page.total == 0 %}
+{% if total == 0 %}
 
-<h2>Procurando por "{{ page.query }}"</h2>
-<p class="center"><em>Não encontrei nada contendo "{{ page.query }}"!</em></p>
+<h2>Procurando por "{{ query }}"</h2>
+<p class="center"><em>Não encontrei nada contendo "{{ query }}"!</em></p>
 
 {% else %}
 
-{% if page.total == 1 %}
-<h3>{{ page.total }} resultado encontrado</h3>
+{% if total == 1 %}
+<h3>{{ total }} resultado encontrado</h3>
 {% else %}
-<h3>{{ page.total }} resultados encontrados</h3>
+<h3>{{ total }} resultados encontrados</h3>
 {% endif %}
 
 <div class="article-grid">
 
-{% for article in page.articles %}
+{% for article in articles %}
 
 <div class="article-box" onclick="location.href = '/view/{{ article.art_id }}'">
     <img src="{{ article.art_thumbnail }}" alt="{{ article['art_title'] }}">
@@ -42,14 +42,14 @@
 <ul>
     <li><a href="/about">Sobre...</a></li>
     <li><a href="/contacts">Faça contato</a></li>
-    <li><a href="/policies">Sua privacidade</a></li>
+    <li><a href="/privacy">Sua privacidade</a></li>
 </ul>
 &nbsp;
 
 <h3>Artigos recentes</h3>
 <div class="aside-grid">
 
-    {% for article in page.recents %}
+    {% for article in recents %}
 
     <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
         <img src="{{ article['art_thumbnail'] }}" alt="{{ article['art_title'] }}">

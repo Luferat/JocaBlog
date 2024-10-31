@@ -6,10 +6,10 @@
 
 <img src="/static/img/contacts.jpg" alt="Faça Contato" class="banner">
 
-{% if page.success %}
+{% if success %}
 
 <div class="success">
-    <h3>Olá {{ page.first_name }}!</h3>
+    <h3>Olá {{ first_name }}!</h3>
     <blockquote>Seu contato foi enviado...</blockquote>
     <p><em>Obrigado.</em></p>
 </div>
@@ -74,7 +74,7 @@
 <h3><i class="fa-solid fa-plus"></i> Links</h3>
 <ul>
     <li><a href="/about">Sobre...</a></li>
-    <li><a href="/policies">Sua privacidade</a></li>
+    <li><a href="/privacy">Sua privacidade</a></li>
 </ul>
 
 {% endblock %}

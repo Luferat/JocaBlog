@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/layout.css">
     {# Faz a carga do CSS adicional caso exista #}
-    {% if page.css %}
-    <link rel="stylesheet" href="/static/css/{{ page['css'] }}">
+    {% if css %}
+    <link rel="stylesheet" href="/static/css/{{ css }}">
     {% endif %}
 
-    <link rel="shortcut icon" href="{{ page.site.favicon }}">
+    <link rel="shortcut icon" href="{{ site.favicon }}">
 
-    {% if page.title == '' %}
-    <title>{{ page.site.name }}</title>
+    {% if title == '' %}
+    <title>{{ site.name }}</title>
     {% else %}
-    <title>{{ page.site.name }} - {{ page.title }}</title>
+    <title>{{ site.name }} - {{ title }}</title>
     {% endif %}
 </head>
 
@@ -26,15 +26,15 @@
         <header>
 
             <div>
-                <a href="/"><img src="{{ page.site.logo }}" alt="Logotipo de {{ page.site.name }}"></a>
-                <h1>{{ page.site.name }}</h1>
+                <a href="/"><img src="{{ site.logo }}" alt="Logotipo de {{ site.name }}"></a>
+                <h1>{{ site.name }}</h1>
                 <span id="btnUser" data-action="login">
                     <img src="/static/img/user.png" alt="Logue-se" referrerpolicy="no-referrer">
                 </span>
             </div>
 
             <form action="/search" method="get">
-                <input type="search" name="q" placeholder="Procurar..." value="{{ page.query }}">
+                <input type="search" name="q" placeholder="Procurar..." value="{{ query }}">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
@@ -61,7 +61,7 @@
         <footer>
             <a href="/"><i class="fa-solid fa-house fa-fw"></i></a>
             <div>
-                © 2024 {{ page.site.owner }}
+                © 2024 {{ site.owner }}
                 <small>
                     <a href="/contacts">Faça contato</a>&nbsp;|&nbsp;<a href="/privacy">Políticas de Privacidade</a>
                 </small>
@@ -75,8 +75,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/js/layout.js"></script>
-    {% if page.js %}
-    <script src="/static/js/{{ page.js }}"></script>
+    {% if js %}
+    <script src="/static/js/{{ js }}"></script>
     {% endif %}
 </body>
 

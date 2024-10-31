@@ -2,12 +2,12 @@
 
 {% block article %}
 
-<h2>{{ page.article['art_title'] }}</h2>
+<h2>{{ article['art_title'] }}</h2>
 <div class="author-date">
-    Por {{ page.article['sta_name'] }}
-    <span> em {{ page.article['art_datebr'] }}</span>
+    Por {{ article['sta_name'] }}
+    <span> em {{ article['art_datebr'] }}</span>
 </div>
-{{ page.article['art_content'] | safe }}
+{{ article['art_content'] | safe }}
 
 <div class="comment-form" id="comments">
 
@@ -15,7 +15,7 @@
 
     <form action="/comment" method="post" id="commentForm">
         <p class="required">Todos os campos são obrigatórios!</p>
-        <input type="hidden" name="artid" value="{{ page.article['art_id'] }}">
+        <input type="hidden" name="artid" value="{{ article['art_id'] }}">
         <input type="hidden" name="name" value="" id="commentName">
         <input type="hidden" name="email" value="" id="commentEmail">
         <textarea name="comment" required minlength="5"></textarea>
@@ -35,7 +35,7 @@
 
 </div>
 
-{% if page.total_comments == 0 %}
+{% if total_comments == 0 %}
 
 <p class="no-comment">Nenhum comentário ainda?<br>Seja o primeiro a comentar!</p>
 
@@ -43,11 +43,11 @@
 
 <div class="comment-list">
 
-    <h3>{{ page.total_comments }} comentários recentes</h3>
+    <h3>{{ total_comments }} comentários recentes</h3>
 
     <div class="comment-grid">
 
-        {% for comment in page.comments %}
+        {% for comment in comments %}
 
         <div class="comment-box">
             <small>Por {{ comment.com_author_name }} em {{ comment.com_datebr }}</small>
@@ -67,28 +67,28 @@
 
 {% block aside %}
 
-<h3>{{ page.article['sta_name'] }}</h3>
+<h3>{{ article['sta_name'] }}</h3>
 
 <div class="aside-author">
 
-    <img src="{{ page.article['sta_image']}}" alt="{{ page.article['sta_name'] }}">
+    <img src="{{ article['sta_image']}}" alt="{{ article['sta_name'] }}">
 
     <ul>
-        <li>{{ page.article['sta_age'] }} anos</li>
-        <li>{{ page.article['sta_pt_type'] }}</li>
+        <li>{{ article['sta_age'] }} anos</li>
+        <li>{{ article['sta_pt_type'] }}</li>
     </ul>
 
-    {{ page.article['sta_description'] }}
+    {{ article['sta_description'] }}
 
 </div>
 
-{% if page.articles != () %}
+{% if articles != () %}
 
-<h3><i class="fa-solid fa-plus"></i> Artigos de {{ page.article['sta_first'] }}</h3>
+<h3><i class="fa-solid fa-plus"></i> Artigos de {{ article['sta_first'] }}</h3>
 
 <div class="aside-grid">
 
-    {% for article in page.articles %}
+    {% for article in articles %}
 
     <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
         <img src="{{ article['art_thumbnail'] }}" alt="{{ article['art_title'] }}">

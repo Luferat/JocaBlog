@@ -26,7 +26,7 @@
 
 <div id="notLogged">
     <h2>Perfil de usuário</h2>
-    <p>Logue-se para ver o seu perfil no {{ page.site.name }}.</p>
+    <p>Logue-se para ver o seu perfil no {{ site.name }}.</p>
     <p class="center">
         <button id="btnLogin"><i class="fa-brands fa-google fa-fw"></i> Logue-se com o Google</button>
     </p>
@@ -42,17 +42,17 @@
 <ul>
     <li><a href="/about">Sobre...</a></li>
     <li><a href="/contacts">Faça contato</a></li>
-    <li><a href="/policies">Sua privacidade</a></li>
+    <li><a href="/privacy">Sua privacidade</a></li>
 </ul>
 
 
-{% if page.comments != () %}
+{% if comments != () %}
 &nbsp;
 <h3>Comentários recentes</h3>
 
 <div class="aside-comments">
 
-    {% for comment in page.comments %}
+    {% for comment in comments %}
 
     <div>
         <h4><a href="/view/{{ comment.com_article }}#comments">{{ comment.art_title }}</a></h4>

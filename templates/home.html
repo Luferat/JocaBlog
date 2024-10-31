@@ -6,7 +6,7 @@
 
 <div class="article-grid">
 
-    {% for article in page.articles %}
+    {% for article in articles %}
 
     <div class="article-box" onclick="location.href = '/view/{{ article.art_id }}'">
         <img src="{{ article['art_thumbnail'] }}" alt="{{ article['art_title'] }}">
@@ -29,7 +29,7 @@
 
 <div class="aside-grid">
 
-    {% for article in page.vieweds %}
+    {% for article in vieweds %}
 
     <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
         <img src="{{ article['art_thumbnail'] }}" alt="{{ article['art_title'] }}">
@@ -40,13 +40,13 @@
 
 </div>
 
-{% if page.commenteds != () %}
+{% if commenteds != () %}
 &nbsp;
 <h3><i class="fa-solid fa-plus"></i> Comentados</h3>
 
 <div class="aside-grid">
 
-    {% for article in page.commenteds %}
+    {% for article in commenteds %}
 
     <div class="aside-article" onclick="location.href = '/view/{{ article.art_id }}'">
         <img src="{{ article['art_thumbnail'] }}" alt="{{ article['art_title'] }}">
